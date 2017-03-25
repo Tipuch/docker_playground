@@ -2,14 +2,20 @@ version: '2'
 services:
   web:
     build: .
-    command: uwsgi docker_playground.ini
-    volumes:
-      - .:/docker_playground
-  nginx:
-    build: deploy/dev/nginx/
+    command: python manage.py runserver 0.0.0.0:8000 --settings=docker_playground.dev
     volumes:
       - .:/docker_playground
     ports:
-      - "80:80"
+      - "8000:8000"
     depends_on: 
-      - web
+      - db
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=docker_playground
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=docker_playground
+    volumes:
+      - ./docker/postgresql:/var/lib/postgresql
+    expose:
+     - "5432"
