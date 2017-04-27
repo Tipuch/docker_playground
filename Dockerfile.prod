@@ -7,4 +7,4 @@ RUN pip install -Ur requirements.txt
 RUN apt-get update && apt-get install nginx -y
 COPY deploy/prod/nginx/docker_playground.conf /etc/nginx/sites-enabled/default
 EXPOSE 80
-CMD python manage.py migrate && service nginx start && uwsgi docker_playground.ini
+CMD python manage.py collectstatic --noinput && python manage.py migrate && service nginx start && uwsgi docker_playground.ini
