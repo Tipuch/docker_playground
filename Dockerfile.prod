@@ -1,6 +1,8 @@
 FROM python:3.5
 ADD . /docker_playground
 WORKDIR /docker_playground
+RUN mkdir -p /var/log/docker_playground &&\
+    chown -R www-data:www-data /var/log/docker_playground
 RUN pip install -Ur requirements.txt
 RUN apt-get update && apt-get install nginx -y
 COPY deploy/prod/nginx/docker_playground.conf /etc/nginx/conf.d/default.conf
