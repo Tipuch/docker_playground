@@ -25,7 +25,7 @@ SECRET_KEY = 'j%0no22k_*s@sb6bivrt$az$r9o&+xm8f31))3y^g5kf83h+6-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['54.236.217.208']
+ALLOWED_HOSTS = ['tutorials-fb65a-env.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition
@@ -119,4 +119,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = path.normpath(path.join(BASE_DIR, 'static'))
+STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'static'))
