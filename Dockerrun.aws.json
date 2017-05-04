@@ -1,13 +1,16 @@
 {
-  "AWSEBDockerrunVersion": "1",
-  "Image": {
-    "Name": "364418506124.dkr.ecr.us-east-1.amazonaws.com/nixa:latest",
-    "Update": "true"
-  },
-  "Ports": [
-    {
-      "ContainerPort": "80"
-    }
-  ],
-  "Logging": "/var/log/app-logs"
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [{
+    "name": "web",
+    "essential": true,
+    "memory": 300,
+    "image": "364418506124.dkr.ecr.us-east-1.amazonaws.com/nixa:latest",
+    "update": true,
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "containerPort": 80
+      }
+    ]
+  }]
 }
